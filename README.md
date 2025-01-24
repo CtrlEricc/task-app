@@ -6,7 +6,10 @@
 This documentation provides information about the structure, functionality, and development best practices of the "Task App" application. The app was developed in Flutter, following the MVVM design pattern and using Provider for state management.
 
 ## App Overview
-The "Task App" allows users to manage their tasks efficiently and features a user-friendly interface. It offers functionalities such as task creation by category, marking tasks as completed or not, and task deletion.
+The "Task App" allows users to manage their tasks efficiently and features a user-friendly interface. It offers functionalities such as:
+- task creation by category,
+- marking tasks as completed or not, and
+- task deletion.
 
 ## Running the App
 Before starting, ensure you have the latest version of the Flutter SDK and an emulator properly installed and configured [as per the official documentation](https://docs.flutter.dev/get-started/install), and then follow these steps:
