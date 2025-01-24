@@ -19,6 +19,7 @@ Before starting, ensure you have the latest version of the Flutter SDK and an em
 
 ## Running the Code Challenges
 To run the proposed challenges in "Parte 1" and "Parte 3," follow these steps:
+- Follow previous steps;
 - In the CLI, navigate to the app directory by executing `cd desafios`;
 - Then run `dart desafio_1.dart` to execute the function proposed in "Parte 1," or  
 - Run `dart desafio_3.dart` to execute the function proposed in "Parte 3";  
