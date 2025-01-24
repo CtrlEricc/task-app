@@ -1,66 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:task_app/data/datasources/local/dao/task_dao.dart';
+import 'package:task_app/data/datasources/local/local_database.dart';
+import 'package:task_app/routes.dart';
+import 'package:task_app/ui/add_task/view_model/add_task_viewmodel.dart';
+import 'package:task_app/ui/core/themes/theme.dart';
+import 'package:task_app/ui/home/view_model/home_viewmodel.dart';
+import 'data/repositories/task_repository.dart';
 
 void main() {
-  runApp(const MyApp());
+  // database
+  final database = AppDatabase();
+  //daos
+  final taskDao = TaskDao(database);
+  // repositories
+  final taskRepository = TaskRepository(taskDao);
+
+  runApp(TaskApp(taskRepository: taskRepository));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+class TaskApp extends StatelessWidget {
+  final TaskRepository taskRepository;
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  const TaskApp({required this.taskRepository, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => HomeViewModel(taskRepository),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        ChangeNotifierProvider(
+          create: (_) => AddTaskViewmodel(taskRepository),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Task App',
+        theme: appTheme,
+        initialRoute: '/',
+        onGenerateRoute: Routes.onGenerateRoute,
       ),
     );
   }
