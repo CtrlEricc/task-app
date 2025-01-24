@@ -150,4 +150,4 @@ Package for simple data storage (key-value), ideal for user preferences and sett
 Library for making HTTP requests, used for consuming REST APIs and handling web calls.  
 
 ## The end 👨‍💻
-This documentation provides an overview of the "Task App," its architecture, code structure, and best practices. It should serve as a helpful guide for developers aiming to understand and contribute to the application's codebase.
+This documentation provides an overview of the "Task App", its architecture, code structure, and best practices. It should serve as a helpful guide for developers aiming to understand and contribute to the application's codebase.
