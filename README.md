@@ -3,7 +3,7 @@
 ![Screenshot_1737692519](https://github.com/user-attachments/assets/95701a87-8bd9-4f80-a83d-195fc4731acb) ![Screenshot_1737689689](https://github.com/user-attachments/assets/efb19da6-2ada-4a83-87d4-a1236bce888c)       ![Screenshot_1737689633](https://github.com/user-attachments/assets/208477c1-7d69-4b41-8c6c-630bbdc4b9cd)  
 
 
-This documentation provides information about the structure, functionality, and development best practices of the "Task App" application. The app was developed in Flutter, following the MVVM design pattern and using Provider for state management.
+This documentation provides information about the structure, functionality, and development best practices of the "Task App" application. The app was developed in Flutter, following the MVVM design pattern and using Provider for state management and Drift for manage SQLite local database.
 
 ## App Overview
 The "Task App" allows users to manage their tasks efficiently and features a user-friendly interface. It offers functionalities such as:
